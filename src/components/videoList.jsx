@@ -7,7 +7,10 @@ class VideoList extends Component {
       <ul className="videoList">
         {
           //map으로 비디오 불러오기
-          <VideoItem></VideoItem>
+          this.props.videos.map(video => {
+            // console.log(video.snippet)
+            return <VideoItem video={video.snippet}></VideoItem>
+          })
         }
       </ul>
     )
