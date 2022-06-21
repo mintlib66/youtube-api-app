@@ -1,35 +1,35 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-class Header extends Component {
-  //검색 버튼 클릭 이벤트
-  constructor(props) {
-    super(props)
-    this.state = {
-      keyword: '',
-    }
+import { useRef } from 'react'
+
+function Header({ onSearch }) {
+  const inputRef = useRef()
+
+  const onEnterPress = e => {
+    if (e.key === 'Enter') handleSearch()
   }
-  onSearch = () => {
-    console.log(this.state.keyword)
-    this.props.onSearch(this.state.keyword)
+  const handleSearch = () => {
+    onSearch(inputRef.current.value)
   }
 
-  render() {
-    return (
-      <header>
-        <div className="logo">Youtube Video</div>
-        <div className="search">
-          <input
-            type="text"
-            className="search-input"
-            onChange={e => (this.state.keyword = e.target.value)}
-          />
-          <button className="search-btn" onClick={this.onSearch}>
-            <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
-          </button>
-        </div>
-      </header>
-    )
-  }
+  return (
+    <header>
+      <div className="logo">
+        <span>Youtube Video</span>
+      </div>
+      <div className="search">
+        <input
+          ref={inputRef}
+          type="text"
+          className="search-input"
+          onKeyPress={onEnterPress}
+        />
+        <button className="search-btn" onClick={handleSearch}>
+          <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
+        </button>
+      </div>
+    </header>
+  )
 }
 
 export default Header

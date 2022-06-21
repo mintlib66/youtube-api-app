@@ -8,17 +8,42 @@ body {
   overflow-x: hidden;
 }
 
-header {
+#root {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.App {
+  max-width: 80rem;
+}
+
+header {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 150px auto;
+      grid-template-columns: 150px auto;
+  height: 50px;
   border-bottom: 1px solid gray;
 }
 
 header .logo {
-  width: 150px;
-  height: 50px;
   background: red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
 }
 
 header .search {
@@ -31,13 +56,17 @@ header .search {
 
 header .search .search-input {
   margin: 0;
+  width: 80%;
   height: 35px;
+  font-size: 1.2rem;
 }
 
 header .search .search-btn {
-  width: 80px;
+  width: 50px;
   height: 35px;
   border: 1px solid gray;
+  border-left: none;
+  cursor: pointer;
 }
 
 .main {
@@ -105,8 +134,14 @@ header .search .search-btn {
 .main .videoList .videoItem .thumbnail {
   width: 25%;
   height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
   background: gray;
   margin-right: 0.5rem;
+}
+
+.main .videoList .videoItem .info {
+  width: 75%;
 }
 
 .main .videoList .videoItem .title {
@@ -117,7 +152,7 @@ header .search .search-btn {
 .main .videoList .videoItem .channel {
   margin-top: 0.5rem;
   font-size: 0.9em;
-  color: gray;
+  color: #4e4e4e;
 }
 
 .main .videoList .videoItem .view,
@@ -129,5 +164,11 @@ header .search .search-btn {
 .main .videoList .videoItem:hover {
   -webkit-transform: scale(1.01);
           transform: scale(1.01);
+}
+
+@media (max-width: 800px) {
+  .main .videoList .videoItem {
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=App.css.map */

@@ -12,14 +12,29 @@ body {
   overflow-x: hidden;
 }
 
-header {
+#root {
   display: flex;
+  justify-content: center;
+}
+.App {
+  max-width: 80rem;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 150px auto;
+  height: 50px;
   border-bottom: 1px solid gray;
 
   .logo {
-    width: 150px;
-    height: 50px;
     background: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    color: white;
+    font-weight: bold;
   }
   .search {
     display: flex;
@@ -28,12 +43,16 @@ header {
 
     .search-input {
       margin: 0;
+      width: 80%;
       height: 35px;
+      font-size: 1.2rem;
     }
     .search-btn {
-      width: 80px;
+      width: 50px;
       height: 35px;
       border: 1px solid gray;
+      border-left: none;
+      cursor: pointer;
     }
   }
 }
@@ -42,13 +61,6 @@ header {
   margin: 0 auto;
   display: grid;
   grid-template-areas: 'list';
-
-  // @media (max-width: $width-point) {
-  //   grid-template-columns: auto;
-  //   grid-template-areas:
-  //     'post'
-  //     'list';
-  // }
 
   .post {
     grid-area: post;
@@ -90,8 +102,12 @@ header {
       .thumbnail {
         width: 25%;
         height: 100%;
+        object-fit: cover;
         background: gray;
         margin-right: 0.5rem;
+      }
+      .info {
+        width: 75%;
       }
       .title {
         margin-top: 0.5rem;
@@ -100,7 +116,7 @@ header {
       .channel {
         margin-top: 0.5rem;
         font-size: 0.9em;
-        color: gray;
+        color: rgb(78, 78, 78);
       }
       .view,
       .date {
@@ -110,6 +126,20 @@ header {
     }
     .videoItem:hover {
       transform: scale(1.01);
+    }
+  }
+
+  //화면크기 작아지면
+  @media (max-width: $width-point) {
+    // grid-template-columns: auto;
+    // grid-template-areas:
+    //   'post'
+    //   'list';
+
+    .videoList {
+      .videoItem {
+        width: 100%;
+      }
     }
   }
 }

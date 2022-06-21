@@ -3,7 +3,7 @@ import React from 'react'
 const VideoItem = ({ video: { snippet } }) => (
   <li className="videoItem">
     <img src={snippet.thumbnails.default.url} alt="" className="thumbnail" />
-    <div>
+    <div className="info">
       <p className="title">{snippet.title}</p>
       <p className="channel">{snippet.channelTitle}</p>
       <span className="view">{snippet.view}</span>

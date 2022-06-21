@@ -11,7 +11,6 @@ class Youtube {
         maxResults: 25,
       },
     })
-    // console.log(response.data.items)
     return response.data.items
   }
   async search(query) {
@@ -24,6 +23,7 @@ class Youtube {
       },
     })
     console.log(response.data.items)
+    //제목에 #49&같은 html특수문자 뜸!
     return response.data.items
   }
 }
