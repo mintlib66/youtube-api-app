@@ -6,6 +6,11 @@ import './style/App.css'
 
 function App({ youtube }) {
   const [videos, setVideos] = useState([])
+  const [selectedVideo, setSelectedVideos] = useState(null)
+
+  const selectVideo = video => {
+    setSelectedVideos(video)
+  }
 
   const search = useCallback(
     query => {
@@ -21,10 +26,13 @@ function App({ youtube }) {
   return (
     <div className="App">
       <Header onSearch={search}></Header>
-      {/* 메인화면은 포스트 없이 리스트로 */}
       <div className="main">
-        {/* <Post video={videos}></Post> */}
-        <VideoList videos={videos}></VideoList>
+        {selectedVideo && <Post video={selectedVideo}></Post>}
+        <VideoList
+          videos={videos}
+          onVideoClick={selectVideo}
+          display={selectedVideo ? 'list' : 'grid'}
+        ></VideoList>
       </div>
     </div>
   )

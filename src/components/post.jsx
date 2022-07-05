@@ -1,19 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class Post extends Component {
-  render() {
-    return (
-      <div className="post">
-        <video src=""></video>
-        <h2 className="title">동영상제목</h2>
-        <p>
-          <span className="view">조회수</span>
-          <span className="date">날짜</span>
-        </p>
-        <p className="desc">동영상 설명</p>
+function Post({ video }) {
+  // console.log(video)
+  return (
+    <div className="post">
+      <iframe
+        className="video"
+        type="text/html"
+        src={`https://www.youtube.com/embed/${video.id}`}
+        frameBorder="0"
+        allowFullScreen
+      />
+      <h2 className="title">{video.snippet.title}</h2>
+      <div className="info">
+        <span className="view">{video.snippet.view}</span>
+        <span className="date">{video.snippet.publishedAt.substr(0, 10)}</span>
       </div>
-    )
-  }
+      <h3 className="channel">{video.snippet.channelTitle}</h3>
+      <p className="desc">{video.snippet.description}</p>
+    </div>
+  )
 }
 
 export default Post

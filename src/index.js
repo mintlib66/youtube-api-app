@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import './style/index.css'
 import App from './App'
-import Youtube from './youtube'
+import Youtube from './service/youtube'
 import axios from 'axios'
-
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
@@ -22,4 +21,8 @@ const httpClient = axios.create({
 })
 const youtube = new Youtube(httpClient)
 
-root.render(<App youtube={youtube} />)
+root.render(
+  <StrictMode>
+    <App youtube={youtube} />
+  </StrictMode>
+)
