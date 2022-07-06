@@ -2,7 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useRef } from 'react'
 
-function Header({ onSearch }) {
+function Header({ onSearch, onLogoClick }) {
   const inputRef = useRef()
 
   const onEnterPress = e => {
@@ -14,7 +14,7 @@ function Header({ onSearch }) {
 
   return (
     <header>
-      <div className="logo">
+      <div className="logo" onClick={onLogoClick}>
         <span>Youtube Video</span>
       </div>
       <div className="search">

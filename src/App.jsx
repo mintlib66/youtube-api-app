@@ -12,6 +12,10 @@ function App({ youtube }) {
     setSelectedVideos(video)
   }
 
+  const unselectVideo = () => {
+    setSelectedVideos(null)
+  }
+
   const search = useCallback(
     query => {
       youtube.search(query).then(videos => setVideos(videos))
@@ -25,7 +29,7 @@ function App({ youtube }) {
 
   return (
     <div className="App">
-      <Header onSearch={search}></Header>
+      <Header onSearch={search} onLogoClick={unselectVideo}></Header>
       <div className="main">
         {selectedVideo && <Post video={selectedVideo}></Post>}
         <VideoList
